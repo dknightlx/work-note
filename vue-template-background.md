@@ -1,8 +1,8 @@
-## background图片不显示
+## 运算优先级导致background图片不显示
 
-问题环境：ios8/9
+问题环境：ios 10.1.1
 
-问题定位：在vue的template中，行内样式写入background-image，如果值使用了或，则部分老版本ios手机不显示图片
+问题定位：vue的template中，字符串拼写要注意运算符的优先级问题
 
 
 写法示例：
@@ -10,13 +10,13 @@
 ```
 <div
   class="saler-avatar"
-  :style="{'background-image': 'url(' + salerObj.avatar || defaultAvatar + ')'}"></div>
+  :style="{'background-image': 'url(' + avatar || defaultAvatar + ')'}"></div>
 ```
 
-解决办法：不使用或，用computed计算
+正确写法：或运算应该首先执行
 
 ```
 <div
   class="saler-avatar"
-  :style="{'background-image': 'url(' + avatar + ')'}"></div>
+  :style="{'background-image': 'url(' + (avatar || defaultAvatar) + ')'}"></div>
 ```
