@@ -12,3 +12,11 @@
   class="saler-avatar"
   :style="{'background-image': 'url(' + salerObj.avatar || defaultAvatar + ')'}"></div>
 ```
+
+解决办法：不使用或，用computed计算
+
+```
+<div
+  class="saler-avatar"
+  :style="{'background-image': 'url(' + avatar + ')'}"></div>
+```
